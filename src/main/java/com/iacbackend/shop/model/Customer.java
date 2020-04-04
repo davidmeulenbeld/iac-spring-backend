@@ -1,9 +1,7 @@
 package com.iacbackend.shop.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Customer {
@@ -13,7 +11,16 @@ public class Customer {
 
     private String name;
 
+    private String phone;
+
     private String email;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private Addres address;
+
+    @OneToMany(mappedBy="customer")
+    private Set<Bestelling> bestellingen;
 
     public Integer getId() {
         return id;
@@ -31,6 +38,14 @@ public class Customer {
         this.name = name;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -38,5 +53,7 @@ public class Customer {
     public void setEmail(String email) {
         this.email = email;
     }
+
+
 }
 
