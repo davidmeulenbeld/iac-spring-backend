@@ -3,6 +3,7 @@ package com.iacbackend.shop.controller;
 import com.iacbackend.shop.Assemblers.ProductModelAssembler;
 import com.iacbackend.shop.Exceptions.ProductNotFoundException;
 import com.iacbackend.shop.model.Product;
+import com.iacbackend.shop.model.repository.DiscountRepository;
 import com.iacbackend.shop.model.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
@@ -25,6 +26,8 @@ public class ProductController {
     @Autowired
     private ProductRepository repository;
 
+    @Autowired
+    private DiscountRepository discountRepository;
 
     @PostMapping(path="/add")
     public @ResponseBody String addNewProduct (@RequestParam String name
@@ -75,21 +78,13 @@ public class ProductController {
 
     @GetMapping(path="/all")
     public @ResponseBody CollectionModel<EntityModel<Product>> all () {
-
-//        List<EntityModel<Product>> employees = repository.findAll().stream()
-//                .map(assembler::toModel)
-//                .collect(Collectors.toList());
-//
-//        return new CollectionModel<>(employees,
-//                linkTo(methodOn(ProductController.class).all()).withSelfRel());
-
-        List<EntityModel<Product>> employees = StreamSupport.stream(repository.findAll().spliterator(), false)
+        List<EntityModel<Product>> products = StreamSupport.stream(repository.findAll().spliterator(), false)
                 .map(product -> new EntityModel<>(product,
                         linkTo(methodOn(ProductController.class).one(product.getId())).withSelfRel(),
                         linkTo(methodOn(ProductController.class).all()).withRel("products")))
                 .collect(Collectors.toList());
 
-        return new CollectionModel<>(employees,
+        return new CollectionModel<>(products,
                 linkTo(methodOn(ProductController.class).all()).withSelfRel());
     }
 }

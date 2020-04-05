@@ -10,14 +10,24 @@ public class Discount {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
 
-    private Date startdate;
+    private Date startDate;
 
-    private Date enddate;
+    private Date endDate;
 
     private Integer percentage;
 
-    @ManyToMany
-    private Set<Product> products;
+    private String text;
+
+    @OneToOne (mappedBy = "discount")
+    private Product product;
+
+    public Product getProduct() { return product; }
+
+    public void setProduct(Product product) { this.product = product; }
+
+    public String getText() { return text; }
+
+    public void setText(String text) { this.text = text; }
 
     public Integer getId() {
         return id;
@@ -28,19 +38,19 @@ public class Discount {
     }
 
     public Date getStartDate() {
-        return startdate;
+        return startDate;
     }
 
-    public void setStartDate(Date startdate) {
-        this.startdate = startdate;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
     public Date getEndDate() {
-        return enddate;
+        return endDate;
     }
 
     public void setEndDate(Date endDate) {
-            this.enddate = endDate;
+            this.endDate = endDate;
     }
 
     public Integer getPercentage() {

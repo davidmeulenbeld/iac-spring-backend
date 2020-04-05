@@ -19,12 +19,14 @@ public class Product {
 
     private Integer available;
 
-    @ManyToMany
-    @JoinTable(
-            name = "product_discount",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "discount_id"))
-    private Set<Discount> discounts;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinTable(name = "product_discount",
+        joinColumns = {
+            @JoinColumn(name = "product_id", referencedColumnName = "id") },
+        inverseJoinColumns = {
+            @JoinColumn(name = "discount_id", referencedColumnName = "id")
+        })
+    private Discount discount;
 
     @ManyToMany
     @JoinTable(
@@ -39,6 +41,8 @@ public class Product {
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "order_id"))
     private Set<Bestelling> orders;
+
+    public Discount getDiscount() { return discount; }
 
     public Integer getId() {
         return id;
