@@ -14,7 +14,6 @@ public class Bestelling {
 
     private Float totalPrice;
 
-
     @ManyToMany
     private Set<Product> products;
 
