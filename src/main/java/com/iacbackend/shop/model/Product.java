@@ -1,9 +1,16 @@
 package com.iacbackend.shop.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
 public class Product {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -19,29 +26,38 @@ public class Product {
 
     private Integer available;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinTable(name = "product_discount",
-        joinColumns = {
-            @JoinColumn(name = "product_id", referencedColumnName = "id") },
-        inverseJoinColumns = {
-            @JoinColumn(name = "discount_id", referencedColumnName = "id")
-        })
+    @OneToOne
+    @JoinColumn(name = "discount_id")
     private Discount discount;
 
-    @ManyToMany
-    @JoinTable(
-            name = "product_category",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private Set<Category> categories;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "product_category",
+            joinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "id"))
+    private List<Category> categories;
 
-    @ManyToMany
-    @JoinTable(
-            name = "product_bestelling",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "order_id"))
-    private Set<Bestelling> orders;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "product_bestelling",
+            joinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "bestelling_id", referencedColumnName = "id"))
+    private List<Bestelling> bestellingen;
 
+    @JsonSetter
+    public void setBestellingen(List<Bestelling> bestellingen) { this.bestellingen = bestellingen; }
+
+    @JsonIgnore
+    public List<Bestelling> getBestellingen() { return bestellingen; }
+
+    @JsonSetter
+    public void setCategories(List<Category> categories) { this.categories = categories; }
+
+    @JsonIgnore
+    public List<Category> getCategories() { return categories; }
+
+    @JsonSetter
+    public void setDiscount(Discount discount) { this.discount = discount; }
+
+    @JsonIgnore
     public Discount getDiscount() { return discount; }
 
     public Integer getId() {

@@ -1,8 +1,11 @@
 package com.iacbackend.shop.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 public class Bestelling {
@@ -14,15 +17,32 @@ public class Bestelling {
 
     private Float totalPrice;
 
-    @ManyToMany
-    private Set<Product> products;
+    private boolean ordered;
 
+    @ManyToMany(mappedBy = "bestellingen")
+    private List<Product> products;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    @JsonSetter
+    public List<Product> getProducts() { return products; }
+
+    @JsonIgnore
+    public void setProducts(List<Product> products) { this.products = products; }
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
     private Customer customer;
 
+    @JsonSetter
+    public void setOrdered(boolean ordered) { this.ordered = ordered; }
 
+    @JsonIgnore
+    public boolean getOrdered() { return ordered; }
+
+    @JsonIgnore
+    public Customer getCustomer() { return customer; }
+
+    @JsonSetter
+    public void setCustomer(Customer customer) { this.customer = customer; }
 
     public Integer getId() {
         return id;

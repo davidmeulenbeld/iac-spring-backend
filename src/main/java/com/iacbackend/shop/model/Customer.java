@@ -1,7 +1,10 @@
 package com.iacbackend.shop.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 public class Customer {
@@ -15,12 +18,24 @@ public class Customer {
 
     private String email;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
-    private Addres address;
+    @OneToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
 
-    @OneToMany(mappedBy="customer")
-    private Set<Bestelling> bestellingen;
+    @OneToMany(mappedBy = "customer")
+    private List<Bestelling> bestellingen;
+
+    @JsonSetter
+    public void setBestellingen(List<Bestelling> bestellingen) { this.bestellingen = bestellingen; }
+
+    @JsonIgnore
+    public List<Bestelling> getBestellingen() { return bestellingen; }
+
+    @JsonSetter
+    public void setAddress(Address address) { this.address = address; }
+
+    @JsonIgnore
+    public Address getAddress() { return address; }
 
     public Integer getId() {
         return id;

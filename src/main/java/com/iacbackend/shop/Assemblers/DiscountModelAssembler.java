@@ -18,14 +18,17 @@ public class DiscountModelAssembler implements RepresentationModelAssembler<Disc
 
         Discount newDiscount = new Discount();
 
+        newDiscount.setId(discount.getId());
         newDiscount.setStartDate(discount.getStartDate());
         newDiscount.setEndDate(discount.getEndDate());
         newDiscount.setText(discount.getText());
         newDiscount.setPercentage(discount.getPercentage());
+        newDiscount.setProduct(discount.getProduct());
 
         EntityModel<Discount> discountModel = new EntityModel<>(newDiscount,
             linkTo(methodOn(DiscountController.class).one(discount.getId())).withSelfRel(),
-            linkTo(methodOn(DiscountController.class).all()).withRel("Discounts"));
+            linkTo(methodOn(DiscountController.class).all()).withRel("Discounts")
+        );
 
         discountModel.add(linkTo(methodOn(ProductController.class).one(discount.getProduct().getId())).withRel("Product"));
 

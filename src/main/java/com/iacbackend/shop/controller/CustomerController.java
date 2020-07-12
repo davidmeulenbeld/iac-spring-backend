@@ -2,6 +2,8 @@ package com.iacbackend.shop.controller;
 
 import com.iacbackend.shop.Assemblers.CustomerModelAssembler;
 import com.iacbackend.shop.Exceptions.ProductNotFoundException;
+import com.iacbackend.shop.model.Address;
+import com.iacbackend.shop.model.repository.AddressRepository;
 import com.iacbackend.shop.model.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
@@ -28,15 +30,30 @@ public class CustomerController {
     @Autowired
     private CustomerRepository repository;
 
+    @Autowired
+    private AddressRepository addressRepository;
+
     @PostMapping(path="/add")
-    public @ResponseBody String addNewUser (@RequestParam String name
-            , @RequestParam String email) {
+    public @ResponseBody String addNewUser (@RequestBody Customer customer) {
 
         Customer c = new Customer();
-        c.setName(name);
-        c.setEmail(email);
+        c.setName(customer.getName());
+        c.setEmail(customer.getEmail());
+        c.setPhone(customer.getPhone());
+
+        Address a = new Address();
+        a.setCity(customer.getAddress().getCity());
+        a.setCountry(customer.getAddress().getCountry());
+        a.setPostalCode(customer.getAddress().getPostalCode());
+        a.setState(customer.getAddress().getState());
+        a.setStreet(customer.getAddress().getStreet());
+
+        addressRepository.save(a);
+
+        c.setAddress(a);
+
         repository.save(c);
-        return "Saved";
+        return "Customer Added";
     }
 
     @GetMapping(path="/{id}")

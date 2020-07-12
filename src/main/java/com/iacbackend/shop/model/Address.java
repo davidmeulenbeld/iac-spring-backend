@@ -3,7 +3,7 @@ package com.iacbackend.shop.model;
 import javax.persistence.*;
 
 @Entity
-public class Addres {
+public class Address {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
@@ -52,6 +52,7 @@ public class Addres {
     public void setState(String state) {
         this.state = state;
     }
+
     public String getPostalCode() {
         return postalCode;
     }
@@ -59,6 +60,7 @@ public class Addres {
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
+
     public String getCountry() {
         return country;
     }

@@ -31,16 +31,14 @@ public class CategoryController {
     private CategoryRepository repository;
 
     @PostMapping(path="/add")
-    public @ResponseBody String addNewCategory (@RequestParam String name
-            , @RequestParam String description
-            , @RequestParam String image ) {
+    public @ResponseBody String addNewCategory (@RequestBody Category category) {
 
         Category c = new Category();
-        c.setName(name);
-        c.setDescription(description);
-        c.setImage(image);
+        c.setName(category.getName());
+        c.setDescription(category.getDescription());
+        c.setImage(category.getImage());
         repository.save(c);
-        return "Category Added";
+        return "Category " + c.getId() + " has been added";
     }
 
     @GetMapping(path="/{id}")

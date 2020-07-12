@@ -4,6 +4,7 @@ import com.iacbackend.shop.Assemblers.DiscountModelAssembler;
 import com.iacbackend.shop.Exceptions.DiscountNotFoundException;
 import com.iacbackend.shop.model.Discount;
 import com.iacbackend.shop.model.repository.DiscountRepository;
+import com.iacbackend.shop.model.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 import org.springframework.hateoas.CollectionModel;
@@ -25,6 +26,9 @@ public class DiscountController {
     @Autowired
     private DiscountRepository repository;
 
+    @Autowired
+    private ProductRepository productRepository;
+
 
     @PostMapping(path="/add")
     public @ResponseBody String addNewDiscount (@RequestBody Discount discount) {
@@ -36,9 +40,10 @@ public class DiscountController {
         d.setText(discount.getText());
         d.setProduct(discount.getProduct());
 
-        repository.updateRelation(discount.getId(), d.getProduct().getId());
-
         repository.save(d);
+
+        productRepository.updateRelation(d.getId(), d.getProduct().getId());
+
         return "Discount Added";
     }
 

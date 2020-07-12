@@ -1,7 +1,12 @@
 package com.iacbackend.shop.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 public class Category {
@@ -15,8 +20,14 @@ public class Category {
 
     private String image;
 
-    @ManyToMany
-    private Set<Product> products;
+    @ManyToMany(mappedBy = "categories")
+    private List<Product> products;
+
+    @JsonIgnore
+    public List<Product> getProducts() { return products; }
+
+    @JsonSetter
+    public void setProducts(List<Product> products) { this.products = products; }
 
     public Integer getId() {
         return id;
