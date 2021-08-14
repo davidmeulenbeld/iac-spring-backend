@@ -22,7 +22,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 /**
  *
  */
-@Controller
+@RestController
 @RequestMapping(path="/bestelling")
 public class BestellingController {
 
@@ -32,7 +32,7 @@ public class BestellingController {
     @Autowired
     private BestellingRepository repository;
 
-    @PostMapping(path="/add")
+    @PostMapping()
     public @ResponseBody String addNewBestelling (@RequestBody Bestelling bestelling) {
 
         Bestelling b = new Bestelling();

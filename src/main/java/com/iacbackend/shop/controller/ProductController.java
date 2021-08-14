@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-@Controller
+@RestController
 @RequestMapping(path = "/products")
 public class ProductController {
 
@@ -40,7 +40,7 @@ public class ProductController {
     @Autowired
     private DiscountRepository discountRepository;
 
-    @PostMapping(path="/add")
+    @PostMapping()
     public @ResponseBody String addNewProduct (@RequestBody Product product) {
 
         // Create product object and save it

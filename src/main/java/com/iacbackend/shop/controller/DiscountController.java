@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-@Controller
+@RestController
 @RequestMapping(path = "/discounts")
 public class DiscountController {
 
@@ -30,7 +30,7 @@ public class DiscountController {
     private ProductRepository productRepository;
 
 
-    @PostMapping(path="/add")
+    @PostMapping()
     public @ResponseBody String addNewDiscount (@RequestBody Discount discount) {
 
         Discount d = new Discount();

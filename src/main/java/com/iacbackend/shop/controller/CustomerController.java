@@ -33,7 +33,7 @@ public class CustomerController {
     @Autowired
     private AddressRepository addressRepository;
 
-    @PostMapping(path="/add")
+    @PostMapping()
     public @ResponseBody String addNewUser (@RequestBody Customer customer) {
 
         Customer c = new Customer();

@@ -20,7 +20,7 @@ import java.util.stream.StreamSupport;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-@Controller
+@RestController
 @RequestMapping(path="/category")
 public class CategoryController {
 
@@ -30,7 +30,7 @@ public class CategoryController {
     @Autowired
     private CategoryRepository repository;
 
-    @PostMapping(path="/add")
+    @PostMapping()
     public @ResponseBody String addNewCategory (@RequestBody Category category) {
 
         Category c = new Category();
