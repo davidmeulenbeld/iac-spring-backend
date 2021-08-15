@@ -11,7 +11,7 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
+import com.iacbackend.shop.service.BestellingService;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -32,50 +32,34 @@ public class BestellingController {
     @Autowired
     private BestellingRepository repository;
 
+    @Autowired BestellingService service;
+
     @PostMapping()
     public @ResponseBody String addNewBestelling (@RequestBody Bestelling bestelling) {
-
-        Bestelling b = new Bestelling();
-        b.setCustomer(bestelling.getCustomer());
-
-        repository.save(b);
-        return "Bestelling added";
+        String message = service.addNewBestelling(bestelling);
+        return message;
     }
 
     @GetMapping(path="/{id}")
     public @ResponseBody EntityModel<Bestelling> one (@PathVariable int id) {
-        Bestelling bestelling = repository.findById(id).orElseThrow(() -> new BestellingNotFoundException(id));
-
+        Bestelling bestelling = service.getBestelling(id);
         return assembler.toModel(bestelling);
     }
 
     @GetMapping(path = "/{id}/order")
     public @ResponseBody EntityModel<Bestelling> order (@PathVariable int id) {
-        Bestelling bestelling = repository.findById(id).orElseThrow(() -> new BestellingNotFoundException(id));
-
-        repository.order(id);
-
+        Bestelling bestelling = service.order(id);
         return assembler.toModel(bestelling);
     }
 
     @GetMapping(path = "/{id}/cancel")
     public @ResponseBody EntityModel<Bestelling> cancel (@PathVariable int id) {
-        Bestelling bestelling = repository.findById(id).orElseThrow(() -> new BestellingNotFoundException(id));
-
-        repository.cancel(id);
-
+        Bestelling bestelling = service.cancel(id);
         return assembler.toModel(bestelling);
     }
 
     @GetMapping(path="/all")
     public @ResponseBody CollectionModel<EntityModel<Bestelling>> all () {
-        List<EntityModel<Bestelling>> bestellingen = StreamSupport.stream(repository.findAll().spliterator(), false)
-                .map(category -> new EntityModel<>(category,
-                        linkTo(methodOn(BestellingController.class).one(category.getId())).withSelfRel(),
-                        linkTo(methodOn(BestellingController.class).all()).withRel("Categories")))
-                .collect(Collectors.toList());
-
-        return new CollectionModel<>(bestellingen,
-                linkTo(methodOn(BestellingController.class).all()).withSelfRel());
+        return service.all();
     }
 }
