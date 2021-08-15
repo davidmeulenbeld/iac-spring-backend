@@ -1,0 +1,56 @@
+2020-04-04 19:52:04,099 | INFO  | Refreshing org.apache.activemq.xbean.XBeanBrokerFactory$1@31368b99: startup date [Sat Apr 04 19:52:04 CEST 2020]; root of context hierarchy | org.apache.activemq.xbean.XBeanBrokerFactory$1 | main
+2020-04-04 19:52:05,349 | INFO  | Using Persistence Adapter: KahaDBPersistenceAdapter[/Users/davidmeulenbeld/Downloads/apache-activemq-5.15.12/data/kahadb] | org.apache.activemq.broker.BrokerService | main
+2020-04-04 19:52:05,502 | INFO  | PListStore:[/Users/davidmeulenbeld/Downloads/apache-activemq-5.15.12/data/localhost/tmp_storage] started | org.apache.activemq.store.kahadb.plist.PListStoreImpl | main
+2020-04-04 19:52:05,651 | INFO  | Apache ActiveMQ 5.15.12 (localhost, ID:Davids-MacBook-Pro.local-52117-1586022725514-0:1) is starting | org.apache.activemq.broker.BrokerService | main
+2020-04-04 19:52:05,688 | INFO  | Listening for connections at: tcp://Davids-MacBook-Pro.local:61616?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.TransportServerThreadSupport | main
+2020-04-04 19:52:05,689 | INFO  | Connector openwire started | org.apache.activemq.broker.TransportConnector | main
+2020-04-04 19:52:05,695 | INFO  | Listening for connections at: amqp://Davids-MacBook-Pro.local:5672?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.TransportServerThreadSupport | main
+2020-04-04 19:52:05,696 | INFO  | Connector amqp started | org.apache.activemq.broker.TransportConnector | main
+2020-04-04 19:52:05,701 | INFO  | Listening for connections at: stomp://Davids-MacBook-Pro.local:61613?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.TransportServerThreadSupport | main
+2020-04-04 19:52:05,703 | INFO  | Connector stomp started | org.apache.activemq.broker.TransportConnector | main
+2020-04-04 19:52:05,709 | INFO  | Listening for connections at: mqtt://Davids-MacBook-Pro.local:1883?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.TransportServerThreadSupport | main
+2020-04-04 19:52:05,711 | INFO  | Connector mqtt started | org.apache.activemq.broker.TransportConnector | main
+2020-04-04 19:52:05,722 | INFO  | Starting Jetty server | org.apache.activemq.transport.WebTransportServerSupport | main
+2020-04-04 19:52:05,846 | INFO  | Creating Jetty connector | org.apache.activemq.transport.WebTransportServerSupport | main
+2020-04-04 19:52:06,145 | WARN  | ServletContext@o.e.j.s.ServletContextHandler@7b208b45{/,null,STARTING} has uncovered http methods for path: / | org.eclipse.jetty.security.SecurityHandler | main
+2020-04-04 19:52:06,234 | INFO  | Listening for connections at ws://Davids-MacBook-Pro.local:61614?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.ws.WSTransportServer | main
+2020-04-04 19:52:06,234 | INFO  | Connector ws started | org.apache.activemq.broker.TransportConnector | main
+2020-04-04 19:52:06,236 | INFO  | Apache ActiveMQ 5.15.12 (localhost, ID:Davids-MacBook-Pro.local-52117-1586022725514-0:1) started | org.apache.activemq.broker.BrokerService | main
+2020-04-04 19:52:06,237 | INFO  | For help or more information please see: http://activemq.apache.org | org.apache.activemq.broker.BrokerService | main
+2020-04-04 19:52:07,137 | INFO  | ActiveMQ WebConsole available at http://0.0.0.0:8161/ | org.apache.activemq.web.WebConsoleStarter | main
+2020-04-04 19:52:07,138 | INFO  | ActiveMQ Jolokia REST API available at http://0.0.0.0:8161/api/jolokia/ | org.apache.activemq.web.WebConsoleStarter | main
+2020-04-04 19:59:10,874 | INFO  | Apache ActiveMQ 5.15.12 (localhost, ID:Davids-MacBook-Pro.local-52117-1586022725514-0:1) is shutting down | org.apache.activemq.broker.BrokerService | ActiveMQ ShutdownHook
+2020-04-04 19:59:10,888 | INFO  | Connector openwire stopped | org.apache.activemq.broker.TransportConnector | ActiveMQ ShutdownHook
+2020-04-04 19:59:10,891 | INFO  | Connector amqp stopped | org.apache.activemq.broker.TransportConnector | ActiveMQ ShutdownHook
+2020-04-04 19:59:10,895 | INFO  | Connector stomp stopped | org.apache.activemq.broker.TransportConnector | ActiveMQ ShutdownHook
+2020-04-04 19:59:10,897 | INFO  | Connector mqtt stopped | org.apache.activemq.broker.TransportConnector | ActiveMQ ShutdownHook
+2020-04-04 19:59:10,918 | INFO  | Connector ws stopped | org.apache.activemq.broker.TransportConnector | ActiveMQ ShutdownHook
+2020-04-04 19:59:10,924 | INFO  | PListStore:[/Users/davidmeulenbeld/Downloads/apache-activemq-5.15.12/data/localhost/tmp_storage] stopped | org.apache.activemq.store.kahadb.plist.PListStoreImpl | ActiveMQ ShutdownHook
+2020-04-04 19:59:10,925 | INFO  | Stopping async queue tasks | org.apache.activemq.store.kahadb.KahaDBStore | ActiveMQ ShutdownHook
+2020-04-04 19:59:10,926 | INFO  | Stopping async topic tasks | org.apache.activemq.store.kahadb.KahaDBStore | ActiveMQ ShutdownHook
+2020-04-04 19:59:10,927 | INFO  | Stopped KahaDB | org.apache.activemq.store.kahadb.KahaDBStore | ActiveMQ ShutdownHook
+2020-04-04 19:59:10,975 | INFO  | Apache ActiveMQ 5.15.12 (localhost, ID:Davids-MacBook-Pro.local-52117-1586022725514-0:1) uptime 7 minutes | org.apache.activemq.broker.BrokerService | ActiveMQ ShutdownHook
+2020-04-04 19:59:10,977 | INFO  | Apache ActiveMQ 5.15.12 (localhost, ID:Davids-MacBook-Pro.local-52117-1586022725514-0:1) is shutdown | org.apache.activemq.broker.BrokerService | ActiveMQ ShutdownHook
+2020-04-04 19:59:10,978 | INFO  | Closing org.apache.activemq.xbean.XBeanBrokerFactory$1@31368b99: startup date [Sat Apr 04 19:52:04 CEST 2020]; root of context hierarchy | org.apache.activemq.xbean.XBeanBrokerFactory$1 | ActiveMQ ShutdownHook
+2020-04-04 19:59:21,148 | INFO  | Refreshing org.apache.activemq.xbean.XBeanBrokerFactory$1@31368b99: startup date [Sat Apr 04 19:59:21 CEST 2020]; root of context hierarchy | org.apache.activemq.xbean.XBeanBrokerFactory$1 | main
+2020-04-04 19:59:22,231 | INFO  | Using Persistence Adapter: KahaDBPersistenceAdapter[/Users/davidmeulenbeld/Downloads/apache-activemq-5.15.12/data/kahadb] | org.apache.activemq.broker.BrokerService | main
+2020-04-04 19:59:22,311 | INFO  | KahaDB is version 6 | org.apache.activemq.store.kahadb.MessageDatabase | main
+2020-04-04 19:59:22,345 | INFO  | PListStore:[/Users/davidmeulenbeld/Downloads/apache-activemq-5.15.12/data/localhost/tmp_storage] started | org.apache.activemq.store.kahadb.plist.PListStoreImpl | main
+2020-04-04 19:59:22,497 | INFO  | Apache ActiveMQ 5.15.12 (localhost, ID:Davids-MacBook-Pro.local-52269-1586023162361-0:1) is starting | org.apache.activemq.broker.BrokerService | main
+2020-04-04 19:59:22,568 | INFO  | Listening for connections at: tcp://Davids-MacBook-Pro.local:61616?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.TransportServerThreadSupport | main
+2020-04-04 19:59:22,577 | INFO  | Connector openwire started | org.apache.activemq.broker.TransportConnector | main
+2020-04-04 19:59:22,583 | INFO  | Listening for connections at: amqp://Davids-MacBook-Pro.local:5672?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.TransportServerThreadSupport | main
+2020-04-04 19:59:22,584 | INFO  | Connector amqp started | org.apache.activemq.broker.TransportConnector | main
+2020-04-04 19:59:22,590 | INFO  | Listening for connections at: stomp://Davids-MacBook-Pro.local:61613?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.TransportServerThreadSupport | main
+2020-04-04 19:59:22,592 | INFO  | Connector stomp started | org.apache.activemq.broker.TransportConnector | main
+2020-04-04 19:59:22,597 | INFO  | Listening for connections at: mqtt://Davids-MacBook-Pro.local:1883?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.TransportServerThreadSupport | main
+2020-04-04 19:59:22,598 | INFO  | Connector mqtt started | org.apache.activemq.broker.TransportConnector | main
+2020-04-04 19:59:22,607 | INFO  | Starting Jetty server | org.apache.activemq.transport.WebTransportServerSupport | main
+2020-04-04 19:59:22,846 | INFO  | Creating Jetty connector | org.apache.activemq.transport.WebTransportServerSupport | main
+2020-04-04 19:59:23,006 | WARN  | ServletContext@o.e.j.s.ServletContextHandler@17d2ed1b{/,null,STARTING} has uncovered http methods for path: / | org.eclipse.jetty.security.SecurityHandler | main
+2020-04-04 19:59:23,069 | INFO  | Listening for connections at ws://Davids-MacBook-Pro.local:61614?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.ws.WSTransportServer | main
+2020-04-04 19:59:23,072 | INFO  | Connector ws started | org.apache.activemq.broker.TransportConnector | main
+2020-04-04 19:59:23,073 | INFO  | Apache ActiveMQ 5.15.12 (localhost, ID:Davids-MacBook-Pro.local-52269-1586023162361-0:1) started | org.apache.activemq.broker.BrokerService | main
+2020-04-04 19:59:23,073 | INFO  | For help or more information please see: http://activemq.apache.org | org.apache.activemq.broker.BrokerService | main
+2020-04-04 19:59:23,867 | INFO  | ActiveMQ WebConsole available at http://0.0.0.0:8161/ | org.apache.activemq.web.WebConsoleStarter | main
+2020-04-04 19:59:23,867 | INFO  | ActiveMQ Jolokia REST API available at http://0.0.0.0:8161/api/jolokia/ | org.apache.activemq.web.WebConsoleStarter | main
